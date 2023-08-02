@@ -85,6 +85,14 @@ public class Main {
         System.out.println("Max GPA: " + maxGPA + " Name: " + name + " Group:" + group);
     }
 
+    public static void printSubjectGroup(List<GroupSubjects> groupSubjects, String grName){
+        for (GroupSubjects subjects : groupSubjects){
+            if (subjects.getGroupName().getName() == grName)   {
+                System.out.println(subjects.getSubjectName().getSubjectName());
+            }
+
+        }
+    }
 
     public static void main(String[] args) {
 	    Group grA = new Group("A");
@@ -119,9 +127,25 @@ public class Main {
 
         getStudentMaxFromAllGroupGPA(students);
 
+        Subject math = new Subject("math");
+        Subject chemistry = new Subject("chemistry");
+        Subject IT = new Subject("IT");
+        Subject ICT = new Subject("ICT");
 
+        List<GroupSubjects> groups = new ArrayList<>();
+        GroupSubjects groupAMath = new GroupSubjects(grA,math);
+        groups.add(groupAMath);
 
+        GroupSubjects groupAIT = new GroupSubjects(grA,IT);
+        groups.add(groupAIT);
 
+        GroupSubjects groupAICT = new GroupSubjects(grA,ICT);
+        groups.add(groupAICT);
+
+        GroupSubjects groupBChemistry = new GroupSubjects(grB,chemistry);
+        groups.add(groupBChemistry);
+
+        printSubjectGroup(groups, "A");
 
     }
 }
