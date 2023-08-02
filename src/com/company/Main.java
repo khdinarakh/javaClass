@@ -14,9 +14,75 @@ public class Main {
                 totalGPA += student.getGpa();
                 count++;
             }
-
         }
         return totalGPA / count;
+    }
+
+    public static double getAllGroupAverageGPA(List<Student> NewStudents) {
+        double totalGPA = 0.0;
+        int count = 0;
+
+        for (Student student : NewStudents) {
+                totalGPA += student.getGpa();
+                count++;
+        }
+        return totalGPA / count;
+    }
+
+    public static void getStudentMinGPA(List<Student> NewStudents, String grName) {
+        double minGPA = 4.0;
+        String name = null;
+
+        for (Student student : NewStudents) {
+            if(minGPA > student.getGpa()) {
+                minGPA = student.getGpa();
+                name = student.getName();
+            }
+        }
+        System.out.println(minGPA + " " + " " + name);
+    }
+
+    public static void getStudentMinFromAllGroupGPA(List<Student> NewStudents) {
+        double minGPA = 4.0;
+        String name = null;
+        String group = null;
+
+        for (Student student : NewStudents) {
+            if(minGPA > student.getGpa()) {
+                minGPA = student.getGpa();
+                name = student.getName();
+                group = student.getGroup().getName();
+            }
+        }
+        System.out.println("Min GPA: " + minGPA + " Name: " + name + " Group:" + group);
+    }
+
+    public static void getStudentMaxGPA(List<Student> NewStudents, String grName) {
+        double maxGPA = 0.0;
+        String name = null;
+
+        for (Student student : NewStudents) {
+            if(maxGPA < student.getGpa()) {
+                maxGPA = student.getGpa();
+                name = student.getName();
+            }
+        }
+        System.out.println(maxGPA + " " + " " + name);
+    }
+
+    public static void getStudentMaxFromAllGroupGPA(List<Student> NewStudents) {
+        double maxGPA = 0.0;
+        String name = null;
+        String group = null;
+
+        for (Student student : NewStudents) {
+            if(maxGPA < student.getGpa()) {
+                maxGPA = student.getGpa();
+                name = student.getName();
+                group = student.getGroup().getName();
+            }
+        }
+        System.out.println("Max GPA: " + maxGPA + " Name: " + name + " Group:" + group);
     }
 
 
@@ -42,6 +108,16 @@ public class Main {
         students.add(st5);
 
         System.out.println(getOneGroupAverageGPA(students, "B"));
+        getStudentMinGPA(students, "B");
+
+
+        System.out.println("All groupGPA" + getAllGroupAverageGPA(students));
+        getStudentMinFromAllGroupGPA(students);
+
+
+        getStudentMaxGPA(students, "B");
+
+        getStudentMaxFromAllGroupGPA(students);
 
 
 
